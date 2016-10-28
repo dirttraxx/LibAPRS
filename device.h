@@ -25,8 +25,12 @@
     #define DAC_DDR  DDRD
     #define LED_PORT PORTB
     #define LED_DDR  DDRB
+    #define LED_RX_PIN 2
+    #define LED_TX_PIN 1
     #define ADC_PORT PORTC
     #define ADC_DDR  DDRC
+    #define ADC_PIN 0
+    #define PPT_PIN 3
 #endif
 
 #endif

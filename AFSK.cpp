@@ -40,9 +40,9 @@ void AFSK_hw_init(void) {
         ADMUX = 0;
     }
 
-    ADC_DDR  &= ~_BV(0);
-    ADC_PORT &= ~_BV(0);
-    DIDR0 |= _BV(0);
+    ADC_DDR  &= ~_BV(ADC_PIN);
+    ADC_PORT &= ~_BV(ADC_PIN);
+    DIDR0 |= _BV(ADC_PIN);
     ADCSRB =    _BV(ADTS2) |
                 _BV(ADTS1) |
                 _BV(ADTS0);  
@@ -462,7 +462,7 @@ ISR(ADC_vect) {
     TIFR1 = _BV(ICF1);
     AFSK_adc_isr(AFSK_modem, ((int16_t)((ADC) >> 2) - 128));
     if (hw_afsk_dac_isr) {
-        DAC_PORT = (AFSK_dac_isr(AFSK_modem) & 0xF0) | _BV(3); 
+        DAC_PORT = (AFSK_dac_isr(AFSK_modem) & 0xF0) | _BV(PPT_PIN); 
     } else {
         DAC_PORT = 128;
     }
