@@ -37,7 +37,13 @@ void AFSK_hw_init(void) {
     if (hw_5v_ref) {
         ADMUX = _BV(REFS0) | 0;
     } else {
+
+// Arduino Pro Mini 5V 16 MHz or Arduino Pro Mini 3V3 8 MHz have hardcoded the AREF to VCC
+#ifdef ARDUINO_AVR_PRO
+        ADMUX = _BV(REFS0) | 0;
+#else
         ADMUX = 0;
+#endif
     }
 
     ADC_DDR  &= ~_BV(ADC_PIN);
