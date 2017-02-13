@@ -25,8 +25,15 @@
     #define DAC_DDR  DDRD
     #define LED_PORT PORTB
     #define LED_DDR  DDRB
+
+// Use Arduino digital pin 13 (PB5) for TX_PIN
+#ifdef ARDUINO_AVR_PRO
+    #define LED_RX_PIN 0
+    #define LED_TX_PIN 5
+#else
     #define LED_RX_PIN 2
     #define LED_TX_PIN 1
+#endif
     #define ADC_PORT PORTC
     #define ADC_DDR  DDRC
     #define ADC_PIN 0
