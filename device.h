@@ -26,8 +26,8 @@
     #define LED_PORT PORTB
     #define LED_DDR  DDRB
 
-// Use Arduino digital pin 13 (PB5) for TX_PIN
-#ifdef ARDUINO_AVR_PRO
+// Use Arduino digital pin 13 (PB5) for TX_PIN for Arduino Pro Mini and Arduino Nano
+#ifdef ARDUINO_AVR_PRO || ARDUINO_AVR_NANO
     #define LED_RX_PIN 0
     #define LED_TX_PIN 5
 #else
